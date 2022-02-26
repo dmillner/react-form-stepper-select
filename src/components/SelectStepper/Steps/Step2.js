@@ -193,7 +193,7 @@ function Step2({
                 <SelectBox
                     fieldName={`surface`}
                     label={`Surface`}
-                    startItemText={`Which country has the largest surface?`}
+                    startItemText={`Guess second largest country`}
                     value={surface}
                     options={countryOptions}
                     register={register}

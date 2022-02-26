@@ -13,7 +13,7 @@ export const steps = [
 export const countryOptions = [
 	{ value: 1, label: 'US'  },
 	{ value: 2, label: 'China' },
-	{ value: 3, label: 'Russia' }
+	{ value: 3, label: 'Canada' }
 ];
 
 export const capitalOptions = {
@@ -29,11 +29,11 @@ export const capitalOptions = {
         { value: 3, label: 'Beijing'  },
         { value: 4, label: 'Chengdu'  }
     ],
-    Russia: [
-        { value: 1, label: 'Moscow'  },
-        { value: 2, label: 'St Petersburg' },
-        { value: 3, label: 'Kazan'  },
-        { value: 4, label: 'Minsk'  }
+    Canada: [
+        { value: 1, label: 'Winnipeg'  },
+        { value: 2, label: 'Montreal' },
+        { value: 3, label: 'Ottowa'  },
+        { value: 4, label: 'Wawa – Ontario'  }
     ]
 }
 
@@ -43,7 +43,7 @@ export const capitalOptions = {
 export const countryToCapital = [
     { country: 1, capital: 2},
     { country: 2, capital: 3 },
-    { country: 3, capital: 1}   
+    { country: 3, capital: 3}   
 ];
 
 export const countryQuiz = {
