@@ -48,7 +48,7 @@ function SelectStep1({
         control,
         getValues,
         formState: {
-            isValid
+            isValid 
         }
     } = useForm({
         formValues,

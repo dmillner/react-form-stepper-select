@@ -20,7 +20,7 @@ export const FormContextProvider = ({children}) => {
 	    	solved: false    
 		},
 		step3: {
-			state: { citizens: 0, age: 0 },
+			state: { citizens: 0, age: 0 }, 
 	    	solved: false      
 		}
 	});	

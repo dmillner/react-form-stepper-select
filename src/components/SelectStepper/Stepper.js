@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState, useContext} from 'react';
+import React, {Fragment, useEffect, useState, useContext, useCallback} from 'react';
 import { 
     Box, Button, Container, CssBaseline, Grid, Stepper, Step, StepLabel, Typography
 } from '@mui/material';
@@ -6,7 +6,11 @@ import { steps } from './data';
 import { FormContext } from './FormContext';
 import Copyright from '../Copyright';
 
-function SelectStepper() {
+let render = 0;
+
+function SelectStepper() { 
+
+    render = render + 1;
 
     /***
      * Form Store
@@ -43,18 +47,14 @@ function SelectStepper() {
         if (activeStep === steps.length - 1 && finished) {
             setSolutionProvided(true);
         }       
-    }, [activeStep, step1Answered, step2Answered, finished]);
+    }, [activeStep, step1Answered, step2Answered, finished]);  
 
-    /***
-     * Load Dynamic Content
-     */
-    useEffect(() => {       
-        let Component;
-        const load = async () => {
+    const loadComponent = useCallback(
+        async () => {           
             const StepView = `Step${activeStep+1}`;
             if(!components[StepView]) {             
                 const { default:View } = await import(`./Steps/${StepView}`)
-                Component = <View 
+                const Component = <View 
                     FormContext={FormContext} 
                 />;             
                 setComponent({...components, [StepView]: Component })
@@ -62,9 +62,22 @@ function SelectStepper() {
             } else {               
                 setView(components[StepView]);
             }
-        }
-        load();       
-    }, [activeStep]);  
+        }, [
+            activeStep,
+            components,
+            setComponent 
+        ]
+    )
+
+    /***
+     * Load Dynamic Content
+     */
+    useEffect(() => {         
+        loadComponent();       
+    }, [
+        activeStep, 
+        loadComponent
+    ]);  
 
     /*
      * Step Management
@@ -110,7 +123,8 @@ function SelectStepper() {
 
     return (<div>        
         <Container component="main" maxWidth="xs">
-        <CssBaseline />            
+        <CssBaseline />       
+        <h4 sx={{color: 'white'}}>{render}</h4>
         <Box
             sx={{
                 marginTop: 8,

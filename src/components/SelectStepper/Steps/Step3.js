@@ -22,7 +22,7 @@ const formValues = {
     age: 0,
 }
 
-function Step3({
+function Step3({ 
     FormContext
 }) {
 
